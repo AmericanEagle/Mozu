@@ -1,0 +1,23 @@
+<div class="header-top clearfix">
+    <div class="container m_1half">
+        <div class="grid_8">
+           <div class="phone-area">
+                <span class="phone-icon"></span>
+                <a href="tel:123-456-7890">
+                   123-456-7890
+                </a>
+           </div>
+           <div class="email-area">
+               <span class="email-icon"></span>
+               <a href="mailto:email@mail.com">
+                   email@mail.com
+               </a>
+           </div>
+        </div>
+        <div class="grid_8">
+            {% block utility-nav %}
+            {% include "modules/page-header/utility-nav" %}
+            {% endblock utility-nav %}                     
+        </div>                                                                          
+    </div>                  
+</div>

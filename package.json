@@ -1,0 +1,17 @@
+{
+  "name": "your_theme",
+  "version": "0.1.0",
+  "devDependencies": {
+    "async": "^0.2",
+    "grunt": "^0.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.6",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-jshint": "^0.8",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-watch": "^0.5",
+    "grunt-jsonlint": "^1.0",
+    "semver": "^3.0",
+    "zubat": "*"
+  }
+}
