@@ -37,11 +37,7 @@ Before you can build the application, you must install all the npm dependencies 
   npm install
 ```
 
-This will install the latest compatible grunt version under node_modules, along with several other dependencies. In some cases, I've found it's necessary to also run npm update:
-
-```bash
-  npm update
-```
+This will install the latest compatible grunt version under node_modules, along with several other dependencies. 
 
 To install the Mozu build tools, run the following from a command line in your project folder:
 
@@ -51,11 +47,11 @@ To install the Mozu build tools, run the following from a command line in your p
 
 This command installs two global command line utilities, Grunt (for running build tasks) and Bower (for managing frontend packages). This command also installs local development dependencies for your theme in the `node_modules` folder, and the Core themes in the `references` folder.
 
-Youíre now ready to begin working on your Mozu theme.
+You‚Äôre now ready to begin working on your Mozu theme.
 
 ## Initializing your local environment
 
-First and foremost, letís run a command that will keep the source code separate from the build files. This separation allows you from accidentally editing the build. Via your CMD, cd to your project folder and run the following command:
+First and foremost, let‚Äôs run a command that will keep the source code separate from the build files. This separation allows you from accidentally editing the build. Via your CMD, cd to your project folder and run the following command:
 
 ```bash
   grunt init
@@ -63,7 +59,7 @@ First and foremost, letís run a command that will keep the source code separate 
 
 This task copies all of the stylesheets from /references/core6/stylesheets/ into your /stylesheets/ source folder. 
 
-Next, note the /dev/ folder in the root of your project folder. Within this directory, youíll notice the following paths:
+Next, note the /dev/ folder in the root of your project folder. Within this directory, you‚Äôll notice the following paths:
 
 * /css/
 * /images/
@@ -71,9 +67,9 @@ Next, note the /dev/ folder in the root of your project folder. Within this dire
 
 The /dev/css/ path will be where the LESS files concatenate into a style.css file to be used locally. 
 
->The /images/ and /js/ folders are optional. You can utilize the /images/ and /js/ folders when developing locally ñ but using the Mozu default /resources/ folder accomplishes the same thing more or less.
+>The /images/ and /js/ folders are optional. You can utilize the /images/ and /js/ folders when developing locally ‚Äì but using the Mozu default /resources/ folder accomplishes the same thing more or less.
 
-An annoying thing youíll have to do for now is to remove all references of the {{themeSettings}} calls in your Less files. Thankfully, the only two files that contain these calls are /base/variables.less and /modules/page-header.less. If those references are still in, the Less files wonít be able to compile. I would make a copy of those files on your local CPU for future reference as once youíre done working locally you can utilize these theme settings again.
+An annoying thing you‚Äôll have to do for now is to remove all references of the {{themeSettings}} calls in your Less files. Thankfully, the only two files that contain these calls are /base/variables.less and /modules/page-header.less. If those references are still in, the Less files won‚Äôt be able to compile. I would make a copy of those files on your local CPU for future reference as once you‚Äôre done working locally you can utilize these theme settings again.
 
 Now in your CMD, run the following command:
 
@@ -83,7 +79,7 @@ Now in your CMD, run the following command:
 
 This will compile your LESS files into your /dev/css/style.css file. 
 
-When coding, enable the grunt watch task ñ in your CMD run the following:
+When coding, enable the grunt watch task ‚Äì in your CMD run the following:
 
 ```bash
   grunt watch
@@ -92,11 +88,11 @@ When coding, enable the grunt watch task ñ in your CMD run the following:
 If everything was setup correctly in the Gruntfile, the CMD should say:
 
 ```bash
-  ìRunning ëwatchí task
-  WaitingÖî
+  ‚ÄúRunning ‚Äòwatch‚Äô task
+  Waiting‚Ä¶‚Äù
 ```
 
-While Grunt is ìwatchingî, when editing a .less stylesheet file, it should compile into the style.css file within the /dev/css/ folder.
+While Grunt is ‚Äúwatching‚Äù, when editing a .less stylesheet file, it should compile into the style.css file within the /dev/css/ folder.
 
 The final thing to do is to launch a local webserver via Node.js and the http-server package. This serves your static files like HTML, CSS, and Javascript. In your CMD, cd to your root directory and run the following command:
 
@@ -123,15 +119,15 @@ Assuming you have an index.html page within your /dev/ folder, if you go to http
 
 ## Getting Started
 
-Unfortunately, thereís not a true process down for developing themes locally in Mozu. 
+Unfortunately, there‚Äôs not a true process down for developing themes locally in Mozu. 
 
 There is a flat HTML page: /dev/index.html included with this package that is basically a screen scrape of the source code from the homepage of a Sandbox created in the Mozu Dev Center. All of the resources are pointing to your /dev/ path so feel free to start editing away.
 
 Another option is to set up your regions, widgets, etc. on your template first and then do a screen scrape and edit that way assuming you have a Sandbox created in your Dev Center already prepared and you know the basics of Mozu theme development.
 
-The only thing to note about the above is if you create a new flat .html page youíll want to note to change the stylesheet location to your compiled version: /dev/css/style.css. Additionally, make sure you change the reference of the layout.css file to your local copy as well (/dev/css/layout.css).
+The only thing to note about the above is if you create a new flat .html page you‚Äôll want to note to change the stylesheet location to your compiled version: /dev/css/style.css. Additionally, make sure you change the reference of the layout.css file to your local copy as well (/dev/css/layout.css).
 
-Thatís pretty much the bare bones overview of setting everything up locally and should be enough to point you in the right direction for now.
+That‚Äôs pretty much the bare bones overview of setting everything up locally and should be enough to point you in the right direction for now.
 
 ## Mozu Specific Information
 
