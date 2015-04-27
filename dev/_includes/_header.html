@@ -1,0 +1,27 @@
+<header class="mz-pageheader">
+    <h1 class="mz-storebranding" id="store-branding"><a href="/" title="Mozu Accelerator">Hello World</a></h1>
+
+    <nav class="mz-utilitynav">
+        <ul class="mz-utilitynav-list">
+            <li class="mz-utilitynav-item">
+                <a class="mz-utilitynav-link" data-mz-action="login" data-placement="bottom" href="/user/login">Log In</a>
+            </li>
+
+            <li class="mz-utilitynav-item">
+                <a class="mz-utilitynav-link" data-mz-action="signup" data-placement="bottom" href="/user/signup">Sign Up</a>
+            </li>
+
+            <li class="mz-utilitynav-item">
+                <a class="mz-utilitynav-link mz-utilitynav-link-cart" href="/cart">View Cart (<span class="mz-cartmonitor" data-mz-role="cartmonitor">0</span>)</a>
+            </li>
+        </ul>
+    </nav>
+
+    <form action="/search" class="mz-searchbox mz-searchbox-expands" id="searchbox" name="searchbox">
+        <span class="mz-searchbox-field"><input autocomplete="off" class="mz-searchbox-input" data-mz-role="searchquery" name="query" placeholder="Search" type="search"> <button class="mz-searchbox-button" type="submit"><span class="mz-searchbox-field">Search</span></button></span> <select class="mz-searchbox-categories" data-mz-contextify='[value="categoryId:"]' data-mz-contextify-attr='selected' data-mz-contextify-val='selected' name="facetValueFilter">
+        <option value="">
+            All
+        </option>
+        </select>
+    </form>
+</header>

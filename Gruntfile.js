@@ -1,5 +1,11 @@
 module.exports = function(grunt) {
 
+// Load grunt tasks automatically
+require('load-grunt-tasks')(grunt);    
+    
+// include connect-include
+var ssInclude = require("connect-include");    
+    
   var jsonFiles = [
     'theme.json',
     'theme-ui.json',
@@ -28,7 +34,7 @@ module.exports = function(grunt) {
     'theme-ui.json',
     '*.ico',
     '*.png'
-  ],
+  ],         
 
 versionCmd = ':'; // e.g. 'git describe --tags --always' or 'svn info'
 
@@ -87,11 +93,16 @@ grunt.initConfig({
         }
     },
     copy: {
-        files: {
-            cwd: 'references/core6/stylesheets',  // set working folder / root to copy
-            src: '**/*.less',           // copy all files and subfolders
-            dest: 'stylesheets',    // destination folder
-            expand: true           // required when using cwd
+        core: {
+            files: {
+                cwd: 'references/core6/stylesheets',  // set working folder / root to copy
+                src: '**/*.less',           // copy all files and subfolders
+                dest: 'stylesheets',    // destination folder
+                expand: true           // required when using cwd
+            }
+        },
+        dev: {
+            
         }
     },   
     watch: {
@@ -137,24 +148,50 @@ grunt.initConfig({
         cmd: versionCmd,
         filenames: ["<%= pkg.name %>.zip"]
       }
-    }
+    },
+    // The actual grunt server settings
+    connect: {
+        options: {
+            port: 8080,
+            livereload: 35729,
+            // Change this to '0.0.0.0' to access the server from outside
+            hostname: 'localhost'
+        },
+        livereload: {
+            options: {
+                open: true,
+                base: [
+                    ''
+                ],
+                middleware: function(connect, options) {
+                    // Same as in grunt-contrib-connect
+                    var middlewares = [];
+                    var directory = options.directory || options.base[options.base.length - 1];
+                    if (!Array.isArray(options.base)) {
+                        options.base = [options.base];
+                    }
+
+                    // Here we insert connect-include, use the same pattern to add other middleware
+                    middlewares.push(ssInclude(directory));
+
+                    // Same as in grunt-contrib-connect
+                    options.base.forEach(function(base) {
+                        middlewares.push(connect.static(base));
+                    });
+
+                    middlewares.push(connect.directory(directory));
+                    return middlewares;
+                }
+            }
+        }
+    },    
   });
 
-  [
-   'grunt-jsonlint',
-   'grunt-contrib-jshint',
-   'grunt-contrib-clean',
-   'grunt-contrib-copy',   
-   'grunt-contrib-watch',
-   'grunt-contrib-compress',
-   'grunt-contrib-less'
-  ].forEach(grunt.loadNpmTasks);
-
-  grunt.loadTasks('./tasks/');
+  grunt.loadTasks('./tasks/');  
   
-  
-  grunt.registerTask('theme', ['watch:css']);
-  grunt.registerTask('init', ['clean', 'copy']);    
+  grunt.registerTask('init', ['clean', 'copy:core']); 
+  grunt.registerTask('theme', ['connect:livereload', 'watch:css']);   
+  //Mozu Specific Tasks//    
   grunt.registerTask('build', ['jsonlint', 'jshint', 'checkreferences', 'zubat', 'setver:build', 'compress', 'setver:renamezip']);
   grunt.registerTask('release', ['jsonlint', 'jshint', 'zubat', 'setver:release', 'compress', 'setver:renamezip']);
   grunt.registerTask('default', ['build']);
